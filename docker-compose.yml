@@ -13,6 +13,23 @@ services:
     environment:
       - APP_ENV=dev
       - SCAN_CACHEABLE=false
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: postgres:16.2
+    environment:
+      POSTGRES_DB: database
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: user
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql
+
+volumes:
+  db:
 
 networks:
   default:

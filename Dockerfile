@@ -40,6 +40,10 @@ RUN set -ex \
     && rm -rf /var/cache/apk/* /tmp/* /usr/share/man \
     && echo -e "\033[42;37m Build Completed :).\033[0m\n"
 
+RUN set -ex \
+    && apk --no-cache add \
+    && apk add php83-pdo_pgsql
+
 WORKDIR /opt/www
 
 # Composer Cache
